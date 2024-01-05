@@ -3,13 +3,15 @@ import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import { UserService } from './user.service';
 
-const createUser = catchAsync(async (req, res) => {
-  const result = await UserService.createUserIntoDB(req.body);
+// Create admin account
+const createAdmin = catchAsync(async (req, res) => {
+  const { password, admin: adminData } = req.body;
+  const result = await UserService.createAdminIntoDB(password, adminData);
 
   sendResponse(res, {
-    statusCode: httpStatus.CREATED,
+    statusCode: httpStatus.OK,
     success: true,
-    message: 'User created successfully',
+    message: 'Admin is created succesfully',
     data: result,
   });
 });
@@ -38,7 +40,7 @@ const getSingleUsers = catchAsync(async (req, res) => {
 });
 
 export const UserControllers = {
-  createUser,
+  createAdmin,
   getAllUsers,
   getSingleUsers,
 };

@@ -1,6 +1,10 @@
 export interface IUser {
-  name: string;
+  id: string;
   email: string;
-  avatar?: string;
-  role: 'user' | 'admin';
+  password: string;
+  needsPasswordChange: boolean;
+  role: 'admin' | 'moderator' | 'teacher' | 'guardian';
+  status: 'in-progress' | 'blocked' | 'negligible ';
+  isVerified: boolean;
+  isDeleted: boolean;
 }

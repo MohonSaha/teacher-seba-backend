@@ -1,15 +1,16 @@
 import express from 'express';
 import validateRequest from '../../middlewares/validateRequest';
-import { UserValidations } from './user.validation';
 import { UserControllers } from './user.controller';
+import { AdminValidation } from '../admin/admin.validation';
 
 const router = express.Router();
 
 router.post(
-  '/create-user',
-  validateRequest(UserValidations.createUserValidationSchema),
-  UserControllers.createUser
+  '/create-admin',
+  validateRequest(AdminValidation.createAdminValidationSchema),
+  UserControllers.createAdmin
 );
+
 router.get('/', UserControllers.getAllUsers);
 router.get('/:id', UserControllers.getSingleUsers);
 
