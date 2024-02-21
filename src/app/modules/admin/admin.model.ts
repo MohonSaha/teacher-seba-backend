@@ -76,6 +76,10 @@ const adminSchema = new Schema<IAdmin>({
     type: String,
     required: true,
   },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 export const Admin = model<IAdmin>('Admin', adminSchema)

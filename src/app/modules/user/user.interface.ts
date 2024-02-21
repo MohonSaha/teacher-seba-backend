@@ -3,7 +3,7 @@ export interface IUser {
   email: string
   password: string
   needsPasswordChange: boolean
-  role: 'admin' | 'moderator' | 'teacher' | 'guardian'
+  role: 'admin' | 'moderator' | 'teacher' | 'guardian' | 'superAdmin'
   status: 'in-progress' | 'blocked' | 'negligible '
   isVerified: boolean
   isDeleted: boolean

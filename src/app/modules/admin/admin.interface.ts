@@ -22,4 +22,5 @@ export interface IAdmin {
   permanentLocation: string
   profileImage?: string
   managementDepartment: string
+  isDeleted: boolean
 }
