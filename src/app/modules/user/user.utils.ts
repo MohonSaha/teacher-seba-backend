@@ -1,4 +1,4 @@
-import { User } from './user.model';
+import { User } from './user.model'
 
 // Admin ID
 export const findLastAdminId = async () => {
@@ -9,26 +9,27 @@ export const findLastAdminId = async () => {
     {
       id: 1,
       _id: 0,
-    }
+    },
   )
     .sort({
       createdAt: -1,
     })
-    .lean();
+    .lean()
 
-  return lastAdmin?.id ? lastAdmin.id.substring(2) : undefined;
-};
+  // eslint-disable-next-line no-undefined
+  return lastAdmin?.id ? lastAdmin.id.substring(2) : undefined
+}
 
 export const generateAdminId = async () => {
-  let currentId = (0).toString();
-  const lastAdminId = await findLastAdminId();
+  let currentId = (0).toString()
+  const lastAdminId = await findLastAdminId()
 
   if (lastAdminId) {
-    currentId = lastAdminId.substring(2);
+    currentId = lastAdminId.substring(2)
   }
 
-  let incrementId = (Number(currentId) + 1).toString().padStart(4, '0');
+  let incrementId = (Number(currentId) + 1).toString().padStart(2, '0')
 
-  incrementId = `TSA-${incrementId}`;
-  return incrementId;
-};
+  incrementId = `TSA-${incrementId}`
+  return incrementId
+}

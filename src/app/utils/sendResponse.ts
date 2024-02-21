@@ -1,18 +1,22 @@
-import { Response } from 'express';
+import { Response } from 'express'
 
-interface IResponse<T> {
-  statusCode: number;
-  success: boolean;
-  message?: string;
-  data: T;
+// type for the received data from controller.ts
+type TResponse<T> = {
+  success: boolean
+  statusCode: number
+  message?: string
+  meta?: object
+  data: T
 }
 
-const sendResponse = <T>(res: Response, data: IResponse<T>) => {
+const sendResponse = <T>(res: Response, data: TResponse<T>) => {
   res.status(data.statusCode).json({
     success: data.success,
+    statusCode: data.statusCode,
     message: data.message,
+    meta: data.meta,
     data: data.data,
-  });
-};
+  })
+}
 
-export default sendResponse;
+export default sendResponse

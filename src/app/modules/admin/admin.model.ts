@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose';
-import { IAdmin, IUserName } from './admin.interface';
+import { Schema, model } from 'mongoose'
+import { IAdmin, IUserName } from './admin.interface'
 
 const adminNameSchema = new Schema<IUserName>({
   firstName: {
@@ -14,7 +14,7 @@ const adminNameSchema = new Schema<IUserName>({
     required: [true, 'Last Name is required'],
     maxlength: [20, 'last name can not be more than 20 characters'],
   },
-});
+})
 
 const adminSchema = new Schema<IAdmin>({
   id: {
@@ -76,6 +76,6 @@ const adminSchema = new Schema<IAdmin>({
     type: String,
     required: true,
   },
-});
+})
 
-export const Admin = model<IAdmin>('Admin', adminSchema);
+export const Admin = model<IAdmin>('Admin', adminSchema)

@@ -15,11 +15,11 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "no-unused-vars": "error",
     "no-unused-expressions": "error",
     "prefer-const": "error",
     "no-console": "warn",
-    "no-undef": "error"
+    "no-undefined": "error",
+    "no-unused-vars": "error"
   },
   "globals": {
     "process": "readonly"

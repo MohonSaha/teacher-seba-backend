@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 
 const createUserValidationSchema = z.object({
   body: z.object({
@@ -10,8 +10,8 @@ const createUserValidationSchema = z.object({
     avatar: z.string(),
     role: z.enum(['user', 'admin']),
   }),
-});
+})
 
 export const UserValidations = {
   createUserValidationSchema,
-};
+}

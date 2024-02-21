@@ -1,10 +1,10 @@
-import { z } from 'zod';
-import { Gender } from './admin.constant';
+import { z } from 'zod'
+import { Gender } from './admin.constant'
 
 const createUserNameValidationSchema = z.object({
   firstName: z.string().min(1).max(20),
   lastName: z.string().max(20),
-});
+})
 
 export const createAdminValidationSchema = z.object({
   body: z.object({
@@ -24,8 +24,8 @@ export const createAdminValidationSchema = z.object({
       profileImage: z.string(),
     }),
   }),
-});
+})
 
 export const AdminValidation = {
   createAdminValidationSchema,
-};
+}
