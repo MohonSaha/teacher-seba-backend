@@ -1,4 +1,4 @@
-export const AdminSearchableFields = [
+export const ModeratorSearchableFields = [
   'email',
   'id',
   'contactNo',

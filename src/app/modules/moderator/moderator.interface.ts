@@ -1,7 +1,7 @@
 import { Types } from 'mongoose'
 import { IUserName, TGender } from '../user/user.interface'
 
-export interface IAdmin {
+export interface IModerator {
   id: string
   user: Types.ObjectId
   email: string

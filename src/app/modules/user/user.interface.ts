@@ -1,6 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { Model } from 'mongoose'
 
+export type TGender = 'male' | 'female' | 'other'
+
+export interface IUserName {
+  firstName: string
+  lastName: string
+}
+
 export interface IUser {
   id: string
   email: string

@@ -6,7 +6,7 @@ const createUserNameValidationSchema = z.object({
   lastName: z.string().max(20).optional(),
 })
 
-export const createAdminValidationSchema = z.object({
+export const createModeratorValidationSchema = z.object({
   body: z.object({
     password: z.string().max(20),
     email: z.string().email(),
@@ -30,7 +30,7 @@ const updateUserNameValidationSchema = z.object({
   lastName: z.string().max(20).optional(),
 })
 
-export const updateAdminValidationSchema = z.object({
+export const updateModeratorValidationSchema = z.object({
   body: z.object({
     admin: z.object({
       designation: z.string().optional(),
@@ -49,7 +49,7 @@ export const updateAdminValidationSchema = z.object({
   }),
 })
 
-export const AdminValidation = {
-  createAdminValidationSchema,
-  updateAdminValidationSchema,
+export const ModeratorValidation = {
+  createModeratorValidationSchema,
+  updateModeratorValidationSchema,
 }

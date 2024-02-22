@@ -1,8 +1,8 @@
 import { Schema, model } from 'mongoose'
-import { IAdmin } from './admin.interface'
 import { IUserName } from '../user/user.interface'
+import { IModerator } from './moderator.interface'
 
-const adminNameSchema = new Schema<IUserName>({
+const moderatorNameSchema = new Schema<IUserName>({
   firstName: {
     type: String,
     required: [true, 'First Name is required'],
@@ -17,7 +17,7 @@ const adminNameSchema = new Schema<IUserName>({
   },
 })
 
-const adminSchema = new Schema<IAdmin>({
+const moderatorSchema = new Schema<IModerator>({
   id: {
     type: String,
     required: true,
@@ -42,7 +42,7 @@ const adminSchema = new Schema<IAdmin>({
     type: String,
   },
   name: {
-    type: adminNameSchema,
+    type: moderatorNameSchema,
   },
   gender: {
     type: String,
@@ -78,4 +78,4 @@ const adminSchema = new Schema<IAdmin>({
   },
 })
 
-export const Admin = model<IAdmin>('Admin', adminSchema)
+export const Moderator = model<IModerator>('Moderator', moderatorSchema)

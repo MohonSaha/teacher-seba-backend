@@ -16,6 +16,19 @@ const createAdmin = catchAsync(async (req, res) => {
   })
 })
 
+// Create moderator account
+const createModerator = catchAsync(async (req, res) => {
+  // const { password, admin: adminData } = req.body
+  const result = await UserService.createModeratorIntoDB(req.body)
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Moderator is created succesfully',
+    data: result,
+  })
+})
+
 const getAllUsers = catchAsync(async (req, res) => {
   const result = await UserService.getAllUsersFromDB()
 
@@ -41,6 +54,7 @@ const getSingleUsers = catchAsync(async (req, res) => {
 
 export const UserControllers = {
   createAdmin,
+  createModerator,
   getAllUsers,
   getSingleUsers,
 }
