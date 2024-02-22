@@ -32,6 +32,11 @@ const adminSchema = new Schema<IAdmin>({
     unique: true,
     required: true,
   },
+  mobile: {
+    type: String,
+    unique: true,
+    required: true,
+  },
   designation: {
     type: String,
   },

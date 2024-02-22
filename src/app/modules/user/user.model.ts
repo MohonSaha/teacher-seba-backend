@@ -20,6 +20,10 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
+    mobile: {
+      type: String,
+      required: true,
+    },
     passwordChangeAt: {
       type: Date,
     },
@@ -54,6 +58,32 @@ userSchema.pre('save', async function (next) {
   })
   if (isEmailExist) {
     throw new AppError(httpStatus.BAD_REQUEST, 'This email is already exist')
+  }
+  next()
+})
+
+// Validation for duplicate mobile
+userSchema.pre('save', async function (next) {
+  const isMobileExist = await User.findOne({
+    mobile: this.mobile,
+  })
+  if (isMobileExist) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      'This mobile number is already exist',
+    )
+  }
+  next()
+})
+
+// Validation for valid mobile number lenght
+userSchema.pre('save', async function (next) {
+  const mobileNumber = this.mobile
+  if (mobileNumber.length !== 11) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      'Please provide a valid mobile number',
+    )
   }
   next()
 })

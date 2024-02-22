@@ -10,6 +10,7 @@ export const createAdminValidationSchema = z.object({
   body: z.object({
     password: z.string().max(20),
     email: z.string().email(),
+    mobile: z.string(),
     designation: z.string().optional(),
     name: createUserNameValidationSchema.optional(),
     gender: z.enum([...Gender] as [string, ...string[]]).optional(),

@@ -19,6 +19,8 @@ const createAdminIntoDB = async (payload: IAdmin) => {
   userData.role = 'admin'
   // set admin email
   userData.email = payload.email
+  // set admin mobile
+  userData.mobile = payload.mobile
 
   const session = await mongoose.startSession()
 

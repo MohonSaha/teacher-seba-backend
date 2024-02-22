@@ -4,6 +4,7 @@ import { Model } from 'mongoose'
 export interface IUser {
   id: string
   email: string
+  mobile: string
   password: string
   passwordChangeAt?: Date
   role: 'admin' | 'moderator' | 'teacher' | 'guardian' | 'superAdmin'

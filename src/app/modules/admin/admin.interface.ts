@@ -11,6 +11,7 @@ export interface IAdmin {
   id: string
   user: Types.ObjectId
   email: string
+  mobile: string
   password: string
   designation?: string
   name?: IUserName
