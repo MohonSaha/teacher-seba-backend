@@ -29,6 +29,18 @@ const createModerator = catchAsync(async (req, res) => {
   })
 })
 
+// Create teacher account
+const createTeacher = catchAsync(async (req, res) => {
+  const result = await UserService.createTeacherIntoDB(req.body)
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Teacher is created succesfully',
+    data: result,
+  })
+})
+
 const getAllUsers = catchAsync(async (req, res) => {
   const result = await UserService.getAllUsersFromDB()
 
@@ -55,6 +67,7 @@ const getSingleUsers = catchAsync(async (req, res) => {
 export const UserControllers = {
   createAdmin,
   createModerator,
+  createTeacher,
   getAllUsers,
   getSingleUsers,
 }
