@@ -10,17 +10,18 @@ export interface IUserName {
 export interface IAdmin {
   id: string
   user: Types.ObjectId
-  designation: string
-  name: IUserName
-  gender: TGender
-  dateOfBirth?: string
   email: string
-  contactNo: string
-  emergencyContactNo: string
-  presentLocation: string
-  presentArea: string
-  permanentLocation: string
+  password: string
+  designation?: string
+  name?: IUserName
+  gender?: TGender
+  dateOfBirth?: string
+  contactNo?: string
+  emergencyContactNo?: string
+  presentLocation?: string
+  presentArea?: string
+  permanentLocation?: string
   profileImage?: string
-  managementDepartment: string
+  managementDepartment?: string
   isDeleted: boolean
 }

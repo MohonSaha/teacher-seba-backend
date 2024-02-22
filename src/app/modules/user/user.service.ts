@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import config from '../../config'
+// import config from '../../config'
 import { IAdmin } from '../admin/admin.interface'
 import { IUser } from './user.interface'
 import { User } from './user.model'
@@ -8,12 +8,12 @@ import httpStatus from 'http-status'
 import { Admin } from '../admin/admin.model'
 import AppError from '../../error/appError'
 
-const createAdminIntoDB = async (password: string, payload: IAdmin) => {
+const createAdminIntoDB = async (payload: IAdmin) => {
   // create a user object
   const userData: Partial<IUser> = {}
 
   //if password is not given , use deafult password
-  userData.password = password || (config.default_password as string)
+  userData.password = payload.password
 
   //set admin role
   userData.role = 'admin'

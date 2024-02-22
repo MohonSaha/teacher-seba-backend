@@ -65,12 +65,13 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     errorMessage,
     data,
     errorDetails: err instanceof jwtError ? null : err,
-    stack:
-      config.NODE_ENV === 'production'
-        ? err instanceof jwtError
-          ? null
-          : err?.stack
-        : null,
+    stack: err?.stack,
+    // stack:
+    //   config.NODE_ENV === 'production'
+    //     ? err instanceof jwtError
+    //       ? null
+    //       : err?.stack
+    //     : null,
   })
 }
 

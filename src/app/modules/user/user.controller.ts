@@ -5,8 +5,8 @@ import { UserService } from './user.service'
 
 // Create admin account
 const createAdmin = catchAsync(async (req, res) => {
-  const { password, admin: adminData } = req.body
-  const result = await UserService.createAdminIntoDB(password, adminData)
+  // const { password, admin: adminData } = req.body
+  const result = await UserService.createAdminIntoDB(req.body)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
