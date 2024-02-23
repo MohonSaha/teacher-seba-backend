@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { AuthRoutes } from '../modules/auth/auth.route'
 import { UserRoutes } from '../modules/user/user.route'
 import { AdminRoutes } from '../modules/admin/admin.route'
+import { TeacherRoutes } from '../modules/teacher/teacher.route'
 
 const router = Router()
 
@@ -17,6 +18,14 @@ const moduleRoutes = [
   {
     path: '/admins',
     route: AdminRoutes,
+  },
+  // {
+  //   path: '/moderator',
+  //   route: Modera,
+  // },
+  {
+    path: '/teacher',
+    route: TeacherRoutes,
   },
 ]
 
