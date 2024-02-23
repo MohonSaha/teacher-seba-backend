@@ -15,7 +15,6 @@ const updateTeacherIntoDB = async (id: string, payload: Partial<ITeacher>) => {
     applyStatus,
     ...restTeacherData
   } = payload
-  console.log(payload)
   const modifiedUpdatedData: Record<string, unknown> = {
     ...restTeacherData,
   }

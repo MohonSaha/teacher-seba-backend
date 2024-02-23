@@ -24,7 +24,7 @@ const moduleRoutes = [
   //   route: Modera,
   // },
   {
-    path: '/teacher',
+    path: '/teachers',
     route: TeacherRoutes,
   },
 ]
