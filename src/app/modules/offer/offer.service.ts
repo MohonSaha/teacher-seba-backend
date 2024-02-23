@@ -8,6 +8,10 @@ const createCourseIntoDB = async (payload: IOffer, user: JwtPayload) => {
 
   payload.postedBy = user.userId
 
+  if (user.role === 'admin') {
+    payload.postedStatus = 'approved'
+  }
+
   // Check category validation
   //   const isCategoryExist = await Category.findById(categoryId)
   //   if (!isCategoryExist) {
@@ -257,8 +261,28 @@ const createCourseIntoDB = async (payload: IOffer, user: JwtPayload) => {
 //   }
 // }
 
+// cahnege admin status data
+const chnageAdminStatus = async (
+  id: string,
+  payload: { adminStatus: string },
+) => {
+  const result = await Offer.findByIdAndUpdate(id, payload, { new: true })
+  return result
+}
+
+// cahnege posted status data
+const chnagePostedStatus = async (
+  id: string,
+  payload: { adminStatus: string },
+) => {
+  const result = await Offer.findByIdAndUpdate(id, payload, { new: true })
+  return result
+}
+
 export const OfferServices = {
   createCourseIntoDB,
+  chnageAdminStatus,
+  chnagePostedStatus,
   //   getAllCoursesFromDB,
   //   getCourseWithReviewFromDB,
   //   getTheBestCourseFromDB,

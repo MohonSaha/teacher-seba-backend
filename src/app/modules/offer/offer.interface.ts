@@ -15,9 +15,9 @@ export type TPublicStatus = 'available' | 'booked'
 
 export interface IOffer {
   id: string
-  publicStatus: TPublicStatus
   adminStatus: TAdminStatus
   postedStatus: TPostedStatus
+  publicStatus: TPublicStatus
   title: string
   district: string
   location: string

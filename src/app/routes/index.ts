@@ -29,7 +29,7 @@ const moduleRoutes = [
     route: TeacherRoutes,
   },
   {
-    path: '/offers',
+    path: '/tuition-offers',
     route: OfferRoutes,
   },
 ]

@@ -52,7 +52,6 @@ const updateOfferValidationSchema = z.object({
     tuitionFee: z.number().positive().optional(),
     otherRequirements: z.string().optional(),
     gaurdianNumber: z.string().optional(),
-    publicStatus: z.enum(['available', 'booked']).optional(),
     adminStatus: z
       .enum([
         'updating',
@@ -64,11 +63,33 @@ const updateOfferValidationSchema = z.object({
       ])
       .optional(),
     postedStatus: z.enum(['pending', 'approved', 'blocked']).optional(),
+    publicStatus: z.enum(['available', 'booked']).optional(),
     isDeleted: z.boolean().optional(),
+  }),
+})
+
+const changeAdminStatusValidationSchema = z.object({
+  body: z.object({
+    adminStatus: z.enum([
+      'updating',
+      'searching',
+      'decision pending',
+      'demo running',
+      'confirm',
+      'reject',
+    ]),
+  }),
+})
+
+const changePostedStatusValidationSchema = z.object({
+  body: z.object({
+    postedStatus: z.enum(['pending', 'approved', 'blocked']),
   }),
 })
 
 export const OfferValidation = {
   createOfferValidationSchema,
   updateOfferValidationSchema,
+  changeAdminStatusValidationSchema,
+  changePostedStatusValidationSchema,
 }

@@ -25,4 +25,18 @@ router.post(
 //   courseControllers.updateCourse,
 // )
 
+router.post(
+  '/change-admin-status/:id',
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin),
+  validateRequest(OfferValidation.changeAdminStatusValidationSchema),
+  OfferControllers.chnageAdminStatus,
+)
+
+router.post(
+  '/change-posted-status/:id',
+  auth(USER_ROLE.admin, USER_ROLE.superAdmin),
+  validateRequest(OfferValidation.changePostedStatusValidationSchema),
+  OfferControllers.chnagePostedStatus,
+)
+
 export const OfferRoutes = router
