@@ -3,8 +3,8 @@ import catchAsync from '../utils/catchAsync'
 import httpStatus from 'http-status'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import config from '../config'
-import { TUserRole } from '../modules/auth/auth.interface'
 import jwtError from '../error/jwtError'
+import { TUserRole } from '../modules/auth/auth.interface'
 
 const auth = (...requiredRole: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {

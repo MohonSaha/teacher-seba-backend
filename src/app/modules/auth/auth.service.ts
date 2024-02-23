@@ -37,6 +37,8 @@ const loginUser = async (payload: TLoginUser) => {
 
   // create token and sent to the client
   const jwtPayload = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    userId: (user as any)._id,
     email: user.email,
     role: user?.role,
   }

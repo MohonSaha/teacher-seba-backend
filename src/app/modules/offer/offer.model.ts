@@ -49,8 +49,8 @@ const offerSchema = new Schema<IOffer>({
   otherRequirements: { type: String },
   gaurdianNumber: { type: String },
   recommendedTeacher: { type: Schema.Types.ObjectId, ref: 'Teacher' },
-  postedBy: { type: Schema.Types.ObjectId, ref: 'User' },
+  postedBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   isDeleted: { type: Boolean, default: false },
 })
 
-export const Offer = model<IOffer>('IOffer', offerSchema)
+export const Offer = model<IOffer>('Offer', offerSchema)
