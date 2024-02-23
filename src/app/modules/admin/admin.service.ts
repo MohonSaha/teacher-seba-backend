@@ -71,25 +71,39 @@ const deleteAdminFromDB = async (id: string) => {
   }
 }
 
+// update admin
 const updateAdminIntoDB = async (id: string, payload: Partial<IAdmin>) => {
-  const { name, ...remainingAdminData } = payload
-
+  const { name, ...restAdminData } = payload
   const modifiedUpdatedData: Record<string, unknown> = {
-    ...remainingAdminData,
+    ...restAdminData,
   }
 
-  // update name (non-primitive data)
   if (name && Object.keys(name).length) {
     for (const [key, value] of Object.entries(name)) {
       modifiedUpdatedData[`name.${key}`] = value
     }
   }
 
-  const result = await Admin.findByIdAndUpdate(id, modifiedUpdatedData, {
-    new: true,
-    runValidators: true,
-  })
-  return result
+  try {
+    // update primitive and non-primitive data
+    const updateCOurseData = await Admin.findByIdAndUpdate(
+      id,
+      modifiedUpdatedData,
+      {
+        new: true,
+        runValidators: true,
+      },
+    )
+
+    if (!updateCOurseData) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course !!')
+    }
+
+    const result = await Admin.findById(id)
+    return result
+  } catch (err) {
+    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to update course!!')
+  }
 }
 
 export const AdminServices = {

@@ -32,20 +32,18 @@ const updateUserNameValidationSchema = z.object({
 
 export const updateAdminValidationSchema = z.object({
   body: z.object({
-    admin: z.object({
-      designation: z.string().optional(),
-      name: updateUserNameValidationSchema,
-      gender: z.enum([...Gender] as [string, ...string[]]).optional(),
-      dateOfBirth: z.string().optional(),
-      email: z.string().email().optional(),
-      contactNo: z.string().optional(),
-      emergencyContactNo: z.string().optional(),
-      presentLocation: z.string().optional(),
-      presentArea: z.string().optional(),
-      permanentLocation: z.string().optional(),
-      managementDepartment: z.string().optional(),
-      profileImage: z.string().optional(),
-    }),
+    designation: z.string().optional(),
+    name: updateUserNameValidationSchema.optional(),
+    gender: z.enum([...Gender] as [string, ...string[]]).optional(),
+    dateOfBirth: z.string().optional(),
+    email: z.string().email().optional(),
+    contactNo: z.string().optional(),
+    emergencyContactNo: z.string().optional(),
+    presentLocation: z.string().optional(),
+    presentArea: z.string().optional(),
+    permanentLocation: z.string().optional(),
+    managementDepartment: z.string().optional(),
+    profileImage: z.string().optional(),
   }),
 })
 
