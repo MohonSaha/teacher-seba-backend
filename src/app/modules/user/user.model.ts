@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose'
-import { IUser } from './user.interface'
+import { IUser, UserModel } from './user.interface'
 import config from '../../config'
 import bcrypt from 'bcrypt'
 import AppError from '../../error/appError'
 import httpStatus from 'http-status'
 
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema<IUser, UserModel>(
   {
     id: {
       type: String,
@@ -107,4 +107,24 @@ userSchema.post('save', function (doc, next) {
   next()
 })
 
-export const User = model<IUser>('User', userSchema)
+// reuseable static mathods
+// reuseable static method for ckecking user exist
+userSchema.statics.isUserExistByEmail = async function (email: string) {
+  return await User.findOne({ email }).select('+password')
+}
+
+// reuseable static method for ckecking if the user is deleted
+userSchema.statics.isUserDeleted = async function (id: string) {
+  const status = await User.findOne({ id })
+  return status?.isDeleted
+}
+
+// Cheking if the password is matched
+userSchema.statics.isPasswordMatched = async function (
+  plainTextPassword,
+  hashPassword,
+) {
+  return await bcrypt.compare(plainTextPassword, hashPassword)
+}
+
+export const User = model<IUser, UserModel>('User', userSchema)

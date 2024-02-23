@@ -1,39 +1,44 @@
 import { z } from 'zod'
 
-// const loginValidationSchema = z.object({
-//   body: z.object({
-//     username: z.string({ required_error: 'user name is required' }),
-//     password: z.string({ required_error: 'Password is required' }),
-//   }),
-// })
+const loginValidationSchema = z.object({
+  body: z.object({
+    email: z.string({ required_error: 'Email is required' }),
+    password: z.string({ required_error: 'Password is required' }),
+  }),
+})
 
 const changePasswordValidationSchema = z.object({
   body: z.object({
-    currentPassword: z.string({ required_error: 'old password is required' }),
-    newPassword: z
-      .string({
-        invalid_type_error: 'Password must be a string',
-      })
-      .min(6, {
-        message: 'Password must be at least 6 characters long, Ex: Pass1#',
-      })
-      .max(20, {
-        message: 'Password cannot be more than 20 characters long, Ex: Pass1#',
-      })
-      .regex(/[A-Z]/, {
-        message:
-          'Password must contain at least one uppercase letter, Ex: Pass1#',
-      })
-      .regex(/[0-9]/, {
-        message: 'Password must contain at least one number, Ex: Pass1#',
-      })
-      .regex(/[^a-zA-Z0-9]/, {
-        message:
-          'Password must contain at least one special character, Ex: Pass1#',
-      }),
+    oldPassword: z.string({ required_error: 'oldPassword is required' }),
+    newPassword: z.string({ required_error: 'newPassword is required' }),
+  }),
+})
+
+const refreshTokenValidationSchema = z.object({
+  cookies: z.object({
+    refreshToken: z.string({
+      required_error: 'Refresh token is required!',
+    }),
+  }),
+})
+
+const forgetPasswordValidationSchema = z.object({
+  body: z.object({
+    id: z.string({ required_error: 'User id is required' }),
+  }),
+})
+
+const resetPasswordValidationSchema = z.object({
+  body: z.object({
+    id: z.string({ required_error: 'User id is required' }),
+    newPassword: z.string({ required_error: 'User password is required' }),
   }),
 })
 
 export const AuthValidation = {
+  loginValidationSchema,
   changePasswordValidationSchema,
+  refreshTokenValidationSchema,
+  forgetPasswordValidationSchema,
+  resetPasswordValidationSchema,
 }

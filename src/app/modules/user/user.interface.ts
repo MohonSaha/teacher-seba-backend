@@ -15,7 +15,7 @@ export interface IUser {
   password: string
   passwordChangeAt?: Date
   role: 'admin' | 'moderator' | 'teacher' | 'guardian' | 'superAdmin'
-  status: 'in-progress' | 'blocked' | 'negligible '
+  status: 'in-progress' | 'blocked' | 'negligible'
   isVerified: boolean
   isDeleted: boolean
 }
@@ -23,6 +23,7 @@ export interface IUser {
 export interface UserModel extends Model<IUser> {
   isUserExistByEmail(name: string): Promise<IUser>
   isUserExistById(id: string): Promise<IUser>
+  isUserDeleted(id: string): Promise<IUser>
 
   isPasswordMatched(
     plainTextPassword: string,
