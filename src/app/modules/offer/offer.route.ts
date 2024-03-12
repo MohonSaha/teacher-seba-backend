@@ -7,6 +7,15 @@ import { USER_ROLE } from '../user/user.constant'
 
 const router = express.Router()
 
+/*
+ ** create offer
+ ** get all offers
+ ** Get single offer
+ ** Update a offer
+ ** Cahnege admin status data
+ ** Cahnege posted status data
+ */
+
 router.post(
   '/create-offer',
   auth(USER_ROLE.admin),
@@ -14,16 +23,16 @@ router.post(
   OfferControllers.createOffer,
 )
 
-// router.get('/courses', courseControllers.getAllCourses)
-// router.get('/courses/:id/reviews', courseControllers.getCourseWithReview)
-// router.get('/course/best', courseControllers.getTheBestCourse)
+router.get('/', OfferControllers.getAllOffers)
 
-// router.put(
-//   '/courses/:id',
-//   auth(USER_ROLE.admin),
-//   validateRequest(CourseValidations.updateCourseValidationSchema),
-//   courseControllers.updateCourse,
-// )
+router.get('/:offerId', OfferControllers.getSingleOffer)
+
+router.put(
+  '/update-offer/:offerId',
+  // auth(USER_ROLE.admin),
+  validateRequest(OfferValidation.updateOfferValidationSchema),
+  OfferControllers.updateOffer,
+)
 
 router.post(
   '/change-admin-status/:id',
